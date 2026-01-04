@@ -20,15 +20,33 @@ fi
 # Keep CPU awake
 termux-wake-lock
 
+cd "$HOME/ccminerd"
+
 # Start miner (append logs in real time)
+#nohup "$HOME/ccminerd/ccminer" \
+#  -c "$HOME/ccminerd/config.json" \
+#  >"$LOG" 2>&1 &
 
-Start miner in background
-nohup "$HOME/ccminerd/ccminer" \
-  -c "$HOME/ccminerd/config.json" \
-  >"$LOG" 2>&1 &
+# Clear old log once on start (important)
+: > "$LOG"
 
+# Start miner with fake TTY (CRITICAL)
+script -q -c "./ccminer -c config.json" "$LOG" &
 PID=$!
 echo "$PID" > "$PIDFILE"
+
+# Background log trimmer (keeps last 50 lines)
+(
+  while kill -0 "$PID" 2>/dev/null; do
+    tail -n "$MAX_LINES" "$LOG" > "$LOG.tmp" && mv "$LOG.tmp" "$LOG"
+    sleep 5
+  done
+) &
+
+
+
+#PID=$!
+#echo "$PID" > "$PIDFILE"
 
 printf '\nMining started.\n'
 printf '===============\n'
