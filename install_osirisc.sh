@@ -27,9 +27,6 @@ cd "$BASE_DIR"
 echo "[*] Downloading config.json..."
 curl -L -o config.json "$CONFIG_URL"
 
-echo "[*] Downloading osirisc.sh..."
-curl -L -o start_iris.sh "$OSIRISC_URL"
-
 echo "[*] Downloading start_iris.sh..."
 curl -L -o start_iris.sh "$START_OSIRISC_URL"
 
