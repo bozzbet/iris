@@ -31,7 +31,7 @@ cd "$HOME/ccminerd"
 : > "$LOG"
 
 # Start miner with fake TTY (CRITICAL)
-script -q -c "./ccminer -c config.json" & #"$LOG" &
+script -q -c "./ccminer -c config.json" "$LOG" &
 PID=$!
 echo "$PID" > "$PIDFILE"
 
