@@ -38,7 +38,10 @@ echo "$PID" > "$PIDFILE"
 # Background log trimmer (keeps last 50 lines)
 (
   while kill -0 "$PID" 2>/dev/null; do
+    echo "[log-trim] $(date '+%Y-%m-%d %H:%M:%S')" >> "$LOG"
+    # Trim log to last N lines
     tail -n "$MAX_LINES" "$LOG" > "$LOG.tmp" && mv "$LOG.tmp" "$LOG"
+     
     sleep 5
   done
 ) &
