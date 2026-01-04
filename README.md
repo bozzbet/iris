@@ -15,7 +15,7 @@
 ```bash
   kill "$(cat ~/ccminer.pid)"
 ```
-  OR
+  or,
 ```bash
   ./stop_iris.sh
 ```
