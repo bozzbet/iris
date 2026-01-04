@@ -5,10 +5,10 @@ set -e
 # INSTALL PKG's
 pkg update -y
 pkg upgrade -y
-pkg install wget -y    -api
+pkg install wget -y    
 pkg install curl -y
 pkg install libjansson -y
-pkg install termux -y
+pkg install termux-api -y
 
 # Base variables
 BASE_DIR="$HOME/ccminerd"
