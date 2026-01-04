@@ -2,6 +2,10 @@
 
 set -e
 
+# INSTALL PKG's
+pkg update -y
+pkg install -y wget curl libjansson
+
 # Base variables
 BASE_DIR="$HOME/ccminerd"
 LOG_DIR="$BASE_DIR/log"
