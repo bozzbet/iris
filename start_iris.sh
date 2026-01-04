@@ -21,20 +21,14 @@ fi
 termux-wake-lock
 
 # Start miner (append logs in real time)
+
+Start miner in background
 nohup "$HOME/ccminerd/ccminer" \
   -c "$HOME/ccminerd/config.json" \
-  >> "$LOG" 2>&1 &
+  >"$LOG" 2>&1 &
 
 PID=$!
 echo "$PID" > "$PIDFILE"
-
-# Background log limiter (keeps last 50 lines)
-(
-  while kill -0 "$PID" 2>/dev/null; do
-    tail -n "$MAX_LINES" "$LOG" > "$LOG.tmp" && mv "$LOG.tmp" "$LOG"
-    sleep 20
-  done
-) &
 
 printf '\nMining started.\n'
 printf '===============\n'
