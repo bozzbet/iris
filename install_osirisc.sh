@@ -4,6 +4,7 @@ set -e
 
 # INSTALL PKG's
 pkg update -y
+pkg upgrade -y
 pkg install -y wget curl libjansson termux-api
 
 # Base variables
