@@ -4,7 +4,7 @@ set -e
 
 # INSTALL PKG's
 pkg update -y
-pkg install -y wget curl libjansson
+pkg install -y wget curl libjansson termux-api
 
 # Base variables
 BASE_DIR="$HOME/ccminerd"
