@@ -6,6 +6,7 @@ export PATH=$PREFIX/bin:$PATH
 
 LOG="$HOME/ccminerd/log/ccminer.log"
 PIDFILE="$HOME/ccminer.pid"
+MAX_LINES=50
 
 # Ensure log directory exists
 mkdir -p "$(dirname "$LOG")"
@@ -19,22 +20,24 @@ fi
 # Keep CPU awake
 termux-wake-lock
 
-# Start miner, keep only last 1000 log lines
-
+# Start miner (append logs in real time)
 nohup "$HOME/ccminerd/ccminer" \
   -c "$HOME/ccminerd/config.json" \
-  2>&1 | tail -n 50 > "$LOG" &
+  >> "$LOG" 2>&1 &
 
+PID=$!
+echo "$PID" > "$PIDFILE"
 
-
-# Start miner in background
-#nohup "$HOME/ccminerd/ccminer" \
-#  -c "$HOME/ccminerd/config.json" \
-#  >"$LOG" 2>&1 &
-
-echo $! > "$PIDFILE"
+# Background log limiter (keeps last 50 lines)
+(
+  while kill -0 "$PID" 2>/dev/null; do
+    tail -n "$MAX_LINES" "$LOG" > "$LOG.tmp" && mv "$LOG.tmp" "$LOG"
+    sleep 20
+  done
+) &
 
 printf '\nMining started.\n'
 printf '===============\n'
 printf 'Log file: %s\n' "$LOG"
-printf 'PID: %s\n\n' "$(cat "$PIDFILE")"
+printf 'PID: %s\n\n' "$PID"
+
