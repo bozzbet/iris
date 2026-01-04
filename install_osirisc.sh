@@ -45,8 +45,9 @@ echo "[*] Downloading ccminer..."
 wget -O ccminer "$CCMINER_URL"
 
 echo "[*] Setting executable permissions..."
-chmod +x ccminer start_iris.sh
-chmod +x ccminer stop_iris.sh
-chmod +x ccminer start_irisbuf.sh
+chmod +x ccminer 
+chmod +x start_iris.sh
+chmod +x stop_iris.sh
+chmod +x start_irisbuf.sh
 
 echo "[✓] Installation complete!"
