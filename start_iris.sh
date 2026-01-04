@@ -20,8 +20,12 @@ fi
 termux-wake-lock
 
 # Start miner, keep only last 1000 log lines
-nohup ./ccminer --config config.json 2>&1 | tail -n 50 > log/ccminer.log &
-echo "Miner started. PID $!"
+
+nohup "$HOME/ccminerd/ccminer" \
+  -c "$HOME/ccminerd/config.json" \
+  2>&1 | tail -n 50 > "$LOG" &
+
+
 
 # Start miner in background
 #nohup "$HOME/ccminerd/ccminer" \
