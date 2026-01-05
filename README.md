@@ -1,7 +1,8 @@
 # **Setting Up Android Phone for Verus Mining**
 
-# Pre-Installation Requirements
-Install Termux Application the Android Phone.
+# Pre-Installation Requirements 
+Install Termux Application on the Android Phone before the installation of the miner.
+
 ## Upgrade Packages in Termux
 ```bash
   apt update -y
@@ -59,10 +60,6 @@ Configuration `config.json` File Template
 ```bash
   cd ccminerd
   ./start_iris.sh
-```
-## How To View Progress On Phone
-```bash
-  tail -f ~/ccminerd/log/ccminer.log
 ```
 ## How To Stop The Miner
 ```bash
