@@ -3,12 +3,20 @@
 set -e
 
 # INSTALL PKG's
+echo "[*] Executing pkg update -y.."
 pkg update -y
+echo "[*] Executing pkg upgrade -y.."
 pkg upgrade -y
+echo "[*] pkg install wget -y .."
 pkg install wget -y    
+echo "[*] Executing pkg install curl -y.."
 pkg install curl -y
+echo "[*] Executing pkg install libjansson -y.."
 pkg install libjansson -y
+echo "[*] Executing pkg install termux-api -y.."
 pkg install termux-api -y
+
+echo "[*] Start Installing and Setting Up the Verus Miner..."
 
 # Base variables
 BASE_DIR="$HOME/ccminerd"
