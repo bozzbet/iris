@@ -6,8 +6,8 @@ set -e
 #export DEBIAN_FRONTEND=noninteractive
 
 # INSTALL PKG's
-echo "[*] Executing pkg update -y.."
-apt update -y
+#echo "[*] Executing pkg update -y.."
+#apt update -y
 echo "[*] Installing wget curl libjansson termux-api.."
 apt install -y wget curl libjansson termux-api
 
