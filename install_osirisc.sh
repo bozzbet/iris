@@ -7,17 +7,17 @@ export DEBIAN_FRONTEND=noninteractive
 
 # INSTALL PKG's
 echo "[*] Executing pkg update -y.."
-pkg update -y
+apt update -y
 echo "[*] Executing pkg upgrade -y.."
-pkg upgrade -y
+apt upgrade -y
 echo "[*] pkg install wget -y .."
-pkg install wget -y    
+apt install wget -y    
 echo "[*] Executing pkg install curl -y.."
-pkg install curl -y
+apt install curl -y
 echo "[*] Executing pkg install libjansson -y.."
-pkg install libjansson -y
+apt install libjansson -y
 echo "[*] Executing pkg install termux-api -y.."
-pkg install termux-api -y
+apt install termux-api -y
 
 echo "[*] Start Installing and Setting Up the Verus Miner..."
 
