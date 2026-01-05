@@ -2,8 +2,8 @@
 
 set -e
 
-exec </dev/tty || true
-export DEBIAN_FRONTEND=noninteractive
+#exec </dev/tty || true
+#export DEBIAN_FRONTEND=noninteractive
 
 # INSTALL PKG's
 echo "[*] Executing pkg update -y.."
